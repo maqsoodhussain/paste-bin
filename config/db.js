@@ -1,4 +1,3 @@
-// db.js
 const mongoose = require('mongoose');
 
 let cached = global.mongoose;
@@ -12,9 +11,9 @@ async function connectDB(uri) {
     return cached.conn;
   }
   if (!cached.promise) {
-    cached.promise = mongoose.connect(uri).then((m) => {
-      cached.conn = m;
-      return m;
+    cached.promise = mongoose.connect(uri).then((mongoose) => {
+      cached.conn = mongoose;
+      return mongoose;
     });
   }
   cached.conn = await cached.promise;
