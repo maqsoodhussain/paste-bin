@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 const healthRoute = require('./routes/health');
-// const pasteRoutes = require('./routes/pastes');
+const pasteRoutes = require('./routes/pastes');
 
 
 
@@ -26,7 +26,7 @@ app.get('/',(req,res)=>{
 
 // Routes
 app.use('/api', healthRoute);
-// app.use('/api', pasteRoutes);
+app.use('/api', pasteRoutes);
 
 
 
