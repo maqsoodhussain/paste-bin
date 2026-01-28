@@ -1,14 +1,16 @@
 const express = require('express');
-const { v4: uuidv4 } = require('uuid');
+// const { v4: uuidv4 } = require('uuid');
 
 // const Paste = require('../models/Paste');
 // const { getNow } = require('../utils/time');
 
 const router = express.Router();
 
-router.get('/test',(req,res)=>{
-  res.status(200).send('Inside pastes route')
+router.get("/try",(req,res)=>{
+  return res.status(200).json({ ok: true, message: 'wroking' });
 })
+
+module.exports = router;
 
 /**
  * POST /api/pastes
@@ -165,4 +167,4 @@ router.get('/test',(req,res)=>{
 
 
 
-module.exports = router;
+// module.exports = router;
