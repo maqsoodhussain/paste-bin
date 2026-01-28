@@ -2,9 +2,13 @@ const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 
 // const Paste = require('../models/Paste');
-const { getNow } = require('../utils/time');
+// const { getNow } = require('../utils/time');
 
 const router = express.Router();
+
+router.get('/test',(req,res)=>{
+  res.status(200).send('Inside pastes route')
+})
 
 /**
  * POST /api/pastes
@@ -70,52 +74,52 @@ const router = express.Router();
  * GET /api/pastes/:id
  * Fetch a paste (JSON)
  */
-router.get('/pastes/:id', async (req, res) => {
-  // try {
-  //   const { id } = req.params;
+// router.get('/pastes/:id', async (req, res) => {
+//   // try {
+//   //   const { id } = req.params;
 
-  //   const paste = await Paste.findById(id);
+//   //   const paste = await Paste.findById(id);
 
-  //   /* ---------- NOT FOUND ---------- */
-  //   if (!paste) {
-  //     return res.status(404).json({ error: 'Paste not found' });
-  //   }
+//   //   /* ---------- NOT FOUND ---------- */
+//   //   if (!paste) {
+//   //     return res.status(404).json({ error: 'Paste not found' });
+//   //   }
 
-  //   const now = getNow(req);
+//   //   const now = getNow(req);
 
-  //   /* ---------- TTL CHECK ---------- */
-  //   if (paste.expiresAt !== null && now > paste.expiresAt) {
-  //     return res.status(404).json({ error: 'Paste expired' });
-  //   }
+//   //   /* ---------- TTL CHECK ---------- */
+//   //   if (paste.expiresAt !== null && now > paste.expiresAt) {
+//   //     return res.status(404).json({ error: 'Paste expired' });
+//   //   }
 
-  //   /* ---------- VIEW LIMIT CHECK ---------- */
-  //   if (paste.maxViews !== null && paste.views >= paste.maxViews) {
-  //     return res.status(404).json({ error: 'View limit exceeded' });
-  //   }
+//   //   /* ---------- VIEW LIMIT CHECK ---------- */
+//   //   if (paste.maxViews !== null && paste.views >= paste.maxViews) {
+//   //     return res.status(404).json({ error: 'View limit exceeded' });
+//   //   }
 
-  //   /* ---------- INCREMENT VIEWS ---------- */
-  //   paste.views += 1;
-  //   await paste.save();
+//   //   /* ---------- INCREMENT VIEWS ---------- */
+//   //   paste.views += 1;
+//   //   await paste.save();
 
-  //   /* ---------- RESPONSE ---------- */
-  //   res.status(200).json({
-  //     content: paste.content,
-  //     remaining_views:
-  //       paste.maxViews === null
-  //         ? null
-  //         : Math.max(paste.maxViews - paste.views, 0),
-  //     expires_at:
-  //       paste.expiresAt === null
-  //         ? null
-  //         : new Date(paste.expiresAt).toISOString()
-  //   });
+//   //   /* ---------- RESPONSE ---------- */
+//   //   res.status(200).json({
+//   //     content: paste.content,
+//   //     remaining_views:
+//   //       paste.maxViews === null
+//   //         ? null
+//   //         : Math.max(paste.maxViews - paste.views, 0),
+//   //     expires_at:
+//   //       paste.expiresAt === null
+//   //         ? null
+//   //         : new Date(paste.expiresAt).toISOString()
+//   //   });
 
-  // } catch (err) {
-  //   console.error(err);
-  //   res.status(500).json({ error: 'Internal server error' });
-  // }
-  res.send("paste route");
-});
+//   // } catch (err) {
+//   //   console.error(err);
+//   //   res.status(500).json({ error: 'Internal server error' });
+//   // }
+//   res.send("paste route");
+// });
 
 
 /**
