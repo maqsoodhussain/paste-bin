@@ -2,7 +2,7 @@ const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 
 // const Paste = require('../models/Paste');
-// const { getNow } = require('../utils/time');
+const { getNow } = require('../utils/time');
 
 const router = express.Router();
 
