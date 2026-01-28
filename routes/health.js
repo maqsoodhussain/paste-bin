@@ -17,4 +17,8 @@ router.get('/healthz', async (req, res) => {
   }
 });
 
+router.get("/try",(req,res)=>{
+  return res.status(200).json({ ok: true, message: 'wroking' });
+})
+
 module.exports = router;
