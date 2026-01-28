@@ -1,19 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const connectDB = require('../config/db'); // import the connection logic
+// const connectDB = require('../config/db'); // import the connection logic
 
 const router = express.Router();
 
 router.get('/healthz', async (req, res) => {
   try {
-    await connectDB(process.env.MONGODB_URI); // ensure connection
+    // Check MongoDB connection state
+    const isDbConnected = mongoose.connection.readyState === 1;
 
-    const isDbConnected = mongoose.connection && mongoose.connection.readyState === 1;
+    if (!isDbConnected) {
+      return res.status(500).json({ ok: false });
+    }
 
-    return res.status(isDbConnected ? 200 : 500).json({ ok: isDbConnected });
+    res.status(200).json({ ok: true });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ ok: false, error: err.message });
+    res.status(500).json({ ok: false });
   }
 });
 
