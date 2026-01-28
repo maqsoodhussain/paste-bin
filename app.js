@@ -32,7 +32,7 @@ app.get('/',(req,res)=>{
 
 /* ---------- DATABASE CONNECTION ---------- */
 
-mongoose.connect("mongodb+srv://maqsoodhussainhackit:Hackit.me.maqsoodhussain@clustermain.oo1kcz6.mongodb.net/?appName=ClusterMain")
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('MongoDB connected');
   })
