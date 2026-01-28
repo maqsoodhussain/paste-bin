@@ -6,9 +6,9 @@ const express = require('express');
 
 const router = express.Router();
 
-app.get('/test', (req, res) => {
-  res.json({ id: crypto.randomUUID() });
-});
+router.get("/test",(req,res)=>{
+  return res.json({ id: crypto.randomUUID() });
+})
 
 
 
